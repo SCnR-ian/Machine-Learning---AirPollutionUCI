@@ -18,6 +18,7 @@
    - Build machine learning models to predict air pollution levels
 
    - Evaluate model performance using appropriate metrics
+
   
 ## Process
 
@@ -25,14 +26,18 @@
 
    - Identified -200 as missing value marker across features
   
-   - Observed strong correlation between gas concentrations and sensor readings
+   - Nonlinear Relationship Between Sensor Responses and True Concentrations (CO(GT) vs PT08.S1(CO): 0.04)
 
-   - Noted skewed distribution in pollution variables
+   - Inverse Sensor Responses (PT08.S3(NOx) vs NOx(GT): –0.44)
+  
+   - Sensors are highly correlated with each other (PT08.S1(CO) vs PT08.S2(NMHC): 0.93, PT08.S1(CO) vs PT08.S5(O3): 0.89)
+  
+   - Conclusion : Preference for tree-based and nonlinear models over purely linear approaches
 
 ### Data Preprocessing
 
-   - Time alignment and timestamp construction
-
+   - Replace Nan with linear-based interpolation
+  
    - Missing value handling and normalisation
 
    - Temporal feature extraction (hour, weekday, month)
@@ -59,8 +64,6 @@
    
       - Linear Regression
 
-      - Random Forest Regressor
-
       - Gradient Boosting Regressor
   
    2. Classification (Air Quality Levels)
@@ -73,3 +76,14 @@
 
 
 ### Evaluation 
+   1. Regreesion
+
+      - RMSE, R squared
+  
+   2. Classification
+
+      - Confusion Matrix
+
+      - Precision, Recall, F1-Score
+
+
